@@ -1,0 +1,15 @@
+{
+  "name": "pain_dsa",
+  "version": "1.0.0",
+  "description": "Enhance your JavaScript toolkit with our npm package that introduces a variety of advanced data structures not natively supported by JavaScript. Whether you need a more efficient queue, a versatile tree, or a powerful graph, our package provides robust implementations to improve your code's performance and flexibility. Perfect for developers looking to optimize their algorithms and data handling.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}
