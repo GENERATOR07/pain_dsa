@@ -11,6 +11,11 @@ export class LinkedList<T> {
   constructor() {
     this.head = null;
   }
+  static linkedListFrom<T>(array: T[]): LinkedList<T> {
+    const ll = new LinkedList<T>();
+    array.forEach((value: T) => ll.insertAtTail(value));
+    return ll;
+  }
   insertAtTail(val: T) {
     if (!this.head) this.head = new ListNode(val);
     else {
@@ -32,5 +37,48 @@ export class LinkedList<T> {
     }
 
     return list;
+  }
+  removeByValue(val: T) {
+    if (!this.head) return null;
+    if (this.head.value === val) {
+      this.head = this.head.next;
+      return;
+    }
+    let previous = this.head;
+    let current = this.head.next;
+
+    while (current) {
+      if (current.value === val) {
+        previous.next = current.next;
+        return;
+      }
+      previous = current;
+      current = current.next;
+    }
+  }
+  removeByPosition(position: number) {
+    if (position <= 0 || !this.head) return;
+    if (position === 1) {
+      this.head = this.head.next;
+      return;
+    }
+    let current = this.head;
+    while (position > 2 && current.next) {
+      current = current.next;
+      position--;
+    }
+    if (current.next) current.next = current.next.next;
+  }
+  find(val: T) {
+    let current = this.head;
+    let position = 1;
+    while (current) {
+      if (val === current.value) {
+        return position;
+      }
+      position++;
+      current = current.next;
+    }
+    return current;
   }
 }
