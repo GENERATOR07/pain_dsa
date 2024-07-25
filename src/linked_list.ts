@@ -27,6 +27,32 @@ export class LinkedList<T> {
     }
     return;
   }
+  insertAtHead(val: T) {
+    if (!this.head) this.head = new ListNode(val);
+    else {
+      let temp = this.head;
+      this.head = new ListNode(val);
+      this.head.next = temp;
+    }
+  }
+  insertAt(position: number, value: T) {
+    if (position == 1) {
+      this.insertAtHead(value);
+    } else {
+      if (!this.head) return;
+      let previous = this.head;
+      let current = this.head.next;
+
+      while (current && position > 2) {
+        previous = current;
+        current = current.next;
+        position--;
+      }
+      let newListNode = new ListNode(value);
+      newListNode.next = previous.next;
+      previous.next = newListNode;
+    }
+  }
   showList() {
     let temp = this.head;
     if (!this.head) return null;
