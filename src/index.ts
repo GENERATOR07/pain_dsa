@@ -1,5 +1,8 @@
-import { mergeSort } from "./sorting/merge_sort";
-import { quickSort } from "./sorting/quick_sort";
+import { SegmentTree } from "./segment-tree";
 
-let arr = [4, 7, 3, 45, 66, 69, 7, 22];
-console.log(quickSort(arr));
+const arr = [3, 7, 1, 9, 0, 6, 4, 2, 8, 5];
+let seg = new SegmentTree(arr.length);
+seg.buildTree(arr);
+
+console.log(seg.rangeQuery(1, 2));
+console.log(seg.rangeQuery(4, 4));
